@@ -9,9 +9,37 @@ import SwiftUI
 
 @main
 struct Cards_for_MacApp: App {
+    // state objects
+    @StateObject private var sidebarState = SidebarState.shared
+    @StateObject private var cardsViewModel = CardsViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView {
+                SidebarView()
+            }
+            .frame(minWidth: 1000, minHeight: 800)
+            .listStyle(SidebarListStyle())
+            .navigationTitle("B")
+            .navigationSubtitle("BX")
+            .environmentObject(sidebarState)
+            .environmentObject(cardsViewModel)
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Text("A")
+                }
+            }
+            
         }
+        .commands {
+            CommandGroup(after: CommandGroupPlacement.sidebar) {
+                            Button("Toggle Sidebar") {
+                                toggleSidebar()
+                            }.keyboardShortcut("T")
+                        }
+        }
+    }
+    func toggleSidebar() {
+        NSApp.keyWindow?.firstResponder?.tryToPerform(#selector(NSSplitViewController.toggleSidebar(_:)), with: nil)
     }
 }
