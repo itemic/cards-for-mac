@@ -20,14 +20,13 @@ struct Cards_for_MacApp: App {
             }
             .frame(minWidth: 1000, minHeight: 800)
             .listStyle(SidebarListStyle())
-            .navigationTitle("B")
-            .navigationSubtitle("BX")
+            .navigationTitle("Cards for Mac")
+            .navigationSubtitle("\(sidebarState.sidebarSelection?.capitalized ?? "")")
             .environmentObject(sidebarState)
-            .environmentObject(cardsViewModel)
             .toolbar {
-                ToolbarItem(placement: .primaryAction) {
-                    Text("A")
-                }
+//                ToolbarItem(placement: .primaryAction) {
+//                    Text("A")
+//                }
             }
             
         }

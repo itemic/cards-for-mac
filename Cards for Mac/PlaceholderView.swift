@@ -8,12 +8,15 @@
 import SwiftUI
 
 struct PlaceholderView : View {
-    @EnvironmentObject var vm: CardsViewModel
-    @State var showEditSheet = false
+    @Binding var cards: [Card]
     
+    @State var showEditSheet = false
+    @State private var selectedCard: Card? = nil
     var columns: [GridItem] =
-        [GridItem(.adaptive(minimum: 220))]
+        [GridItem(.adaptive(minimum: 200))]
     var text: String
+    
+    @State private var data: Card.Data = Card.Data()
     
     
     var body: some View {
@@ -21,22 +24,38 @@ struct PlaceholderView : View {
 //        Text(text)
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(vm.cards) {card in
+                    
+                    ForEach(cards) { card in
                         CardView(card: card)
-                            .sheet(isPresented: $showEditSheet) {
-                                CardEditView(card: card, isPresented: self.$showEditSheet).environmentObject(vm)
-                            }
                             .contextMenu {
-                                Button("Edit", action: {showEditSheet.toggle()})
-                                    
-
+                                Button("Details", action: {
+                                        selectedCard = card
+                                        data = card.data
+                                })
+                                Button("Print", action: {
+                                    print(card.id)
+                                    print(card.sideA)
+                                })
                             }
-                            
                     }
+                    
+
                 }.padding()
+                    
             }
         
+        }.sheet(item: $selectedCard) { card in
+            CardDetailView(card: binding(for: card), cardData: $data)
         }
+    }
+    
+    private func binding(for card: Card) -> Binding<Card> {
+        
+        guard let cardIndex = cards.firstIndex(where: {$0 == card}) else {
+            fatalError("No card")
+        }
+            
+        return $cards[cardIndex]
     }
     
     

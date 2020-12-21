@@ -41,7 +41,7 @@ struct CardEditView: View {
                     }.padding(30)
                     
                     Button("Text") {
-                        card.sideB = sideB
+//                        card.sideB = sideB
                         isPresented.toggle()
                     }
                 }
