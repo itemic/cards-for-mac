@@ -12,6 +12,7 @@
 		45221BD02591F55F00148D92 /* NewCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45221BCF2591F55F00148D92 /* NewCardView.swift */; };
 		45221BD3259202AA00148D92 /* EditableCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45221BD2259202AA00148D92 /* EditableCardView.swift */; };
 		458F347025922BAD0071E7E6 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458F346F25922BAD0071E7E6 /* ViewState.swift */; };
+		45C8D89625924304001DE23A /* EditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C8D89525924304001DE23A /* EditCardView.swift */; };
 		45CDC833258F3AE7008AC70A /* Cards_for_MacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CDC832258F3AE7008AC70A /* Cards_for_MacApp.swift */; };
 		45CDC835258F3AE7008AC70A /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CDC834258F3AE7008AC70A /* SidebarView.swift */; };
 		45CDC837258F3AE8008AC70A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45CDC836258F3AE8008AC70A /* Assets.xcassets */; };
@@ -30,6 +31,7 @@
 		45221BCF2591F55F00148D92 /* NewCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCardView.swift; sourceTree = "<group>"; };
 		45221BD2259202AA00148D92 /* EditableCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableCardView.swift; sourceTree = "<group>"; };
 		458F346F25922BAD0071E7E6 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
+		45C8D89525924304001DE23A /* EditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardView.swift; sourceTree = "<group>"; };
 		45CDC82F258F3AE7008AC70A /* Cards for Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cards for Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		45CDC832258F3AE7008AC70A /* Cards_for_MacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cards_for_MacApp.swift; sourceTree = "<group>"; };
 		45CDC834258F3AE7008AC70A /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				45CDC855258F503F008AC70A /* CardEditView.swift */,
 				45048C7A25909B7100B892FE /* CardDetailView.swift */,
 				45221BCF2591F55F00148D92 /* NewCardView.swift */,
+				45C8D89525924304001DE23A /* EditCardView.swift */,
 				45CDC836258F3AE8008AC70A /* Assets.xcassets */,
 				45CDC83B258F3AE8008AC70A /* Info.plist */,
 				45CDC83C258F3AE8008AC70A /* Cards_for_Mac.entitlements */,
@@ -183,6 +186,7 @@
 			files = (
 				45048C7B25909B7100B892FE /* CardDetailView.swift in Sources */,
 				45CDC856258F503F008AC70A /* CardEditView.swift in Sources */,
+				45C8D89625924304001DE23A /* EditCardView.swift in Sources */,
 				45CDC851258F49B5008AC70A /* CardView.swift in Sources */,
 				45221BD02591F55F00148D92 /* NewCardView.swift in Sources */,
 				45221BCD2591EF3500148D92 /* CardsData.swift in Sources */,

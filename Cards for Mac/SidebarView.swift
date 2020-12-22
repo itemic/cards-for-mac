@@ -9,14 +9,14 @@ import SwiftUI
 
 struct SidebarView: View {
     @EnvironmentObject private var sidebarState: SidebarState
-    @Binding var data: [Card]
+    @ObservedObject var data: CardsData
     
     var mockCollections = ["A", "B", "C"]
     var body: some View {
         List(selection: $sidebarState.sidebarSelection) {
             
             ForEach(SidebarState.DefaultSidebarItems.allCases, id: \.self) { item in
-                NavigationLink(destination: PlaceholderView(cards: $data, text: "\(item.rawValue)")) {
+                NavigationLink(destination: PlaceholderView(cardsData: data, text: "\(item.rawValue)")) {
                     Label(LocalizedStringKey(item.rawValue.capitalized), systemImage: item.icon()).font(.headline)
                 }.listItemTint(item.color()).tag(item.rawValue)
                 

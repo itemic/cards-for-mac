@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PlaceholderView : View {
-    @Binding var cards: [Card]
+    @ObservedObject var cardsData: CardsData
     
     @State var showAddSheet = false
     @State private var selectedCard: Card? = nil
@@ -26,7 +26,7 @@ struct PlaceholderView : View {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 20) {
                     
-                    ForEach(cards) { card in
+                    ForEach(cardsData.cards) { card in
                         
                         CardView(card: card)
                             .contextMenu {
@@ -46,19 +46,20 @@ struct PlaceholderView : View {
                     
                 }.padding()
                 Button("Add card") {
-//                    showAddSheet.toggle()
-                    let newCard = Card(sideA: "", sideB: "")
-                    cards.append(newCard)
-                    selectedCard = newCard
+                    showAddSheet.toggle()
+//                    let newCard = Card(sideA: "", sideB: "")
+//                    cards.append(newCard)
+//                    selectedCard = newCard
                 }
                 
                 
             }
             .popover(isPresented: $showAddSheet) {
-                NewCardView(cards: $cards)
+                NewCardView(cards: $cardsData.cards)
             }
             .sheet(item: $selectedCard) { card in
-                CardDetailView(card: binding(for: card), cardData: $data)
+                EditCardView(cards: $cardsData.cards, index: indexOf(card))
+
             }
             
         }
@@ -67,9 +68,7 @@ struct PlaceholderView : View {
                 Button("Add Card") {
                     showAddSheet.toggle()
                 }
-//                .popover(isPresented: $showAddSheet) {
-//                    NewCardView()
-//                }
+                
             }
             
         }
@@ -77,17 +76,17 @@ struct PlaceholderView : View {
         
     }
     
-    private func binding(for card: Card) -> Binding<Card> {
-        
-        guard let cardIndex = cards.firstIndex(where: {$0 == card}) else {
-            fatalError("No card")
-        }
-        
-        return $cards[cardIndex]
-    }
+//    private func binding(for card: Card) -> Binding<Card> {
+//
+//        guard let cardIndex = cardsData.cards.firstIndex(where: {$0 == card}) else {
+//            fatalError("No card")
+//        }
+//
+//        return cardsData.$cards[cardIndex]
+//    }
     
     private func indexOf(_ card: Card) -> Int {
-    guard let cardIndex = cards.firstIndex(where: {$0 == card}) else {
+        guard let cardIndex = cardsData.cards.firstIndex(where: {$0 == card}) else {
         fatalError("No card")
     }
     

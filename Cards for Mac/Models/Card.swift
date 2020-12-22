@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Card: Identifiable, Equatable, Codable, Hashable {
+class Card: Identifiable, Equatable, Codable, ObservableObject {
     static func == (lhs: Card, rhs: Card) -> Bool {
         return lhs.id == rhs.id
     }
@@ -49,7 +49,7 @@ extension Card {
         return Data(sideA: sideA, sideB: sideB)
     }
     
-    mutating func update(from data: Data) {
+    func update(from data: Data) {
         sideA = data.sideA
         sideB = data.sideB
     }

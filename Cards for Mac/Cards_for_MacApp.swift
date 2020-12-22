@@ -19,7 +19,7 @@ struct Cards_for_MacApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                SidebarView(data: $data.cards)
+                SidebarView(data: data)
             }
             .onAppear {
                 data.load()

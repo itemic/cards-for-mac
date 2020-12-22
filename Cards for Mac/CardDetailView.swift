@@ -8,9 +8,20 @@
 import SwiftUI
 
 struct CardDetailView: View {
-    @Binding var card: Card
-    @Binding var cardData: Card.Data
+    
+    @ObservedObject var card: Card
+    @ObservedObject var cardsData: CardsData
+//    @Binding var cardData: Card.Data
     @Environment(\.presentationMode) var presentationMode
+    
+    
+    private func indexOf(_ card: Card) -> Int {
+        guard let cardIndex = cardsData.cards.firstIndex(where: {$0 == card}) else {
+        fatalError("No card")
+    }
+    
+    return cardIndex
+    }
     
     var body: some View {
         HStack {
@@ -21,12 +32,12 @@ struct CardDetailView: View {
                         Spacer()
                         Text("Side A - \(card.sideA)").font(.caption)
                         
-                        TextField("Tap to add Side A", text: $cardData.sideA).font(.system(size: 24)).multilineTextAlignment(.center)
+                        TextField("Tap to add Side A", text: $cardsData.cards[indexOf(card)].sideA).font(.system(size: 24)).multilineTextAlignment(.center)
                         Spacer()
                         Divider()
                         Spacer()
                         Text("Side B - \(card.sideB)").font(.caption)
-                        TextField("Tap to add Side B", text: $cardData.sideB).font(.system(size: 24)).multilineTextAlignment(.center)
+                        TextField("Tap to add Side B", text: $cardsData.cards[indexOf(card)].sideB).font(.system(size: 24)).multilineTextAlignment(.center)
                         Spacer()
                     }.padding()
                     .frame(width: 300, height: 300)
@@ -38,7 +49,8 @@ struct CardDetailView: View {
                 
                 Button("Text") {
 //                        card.sideB = sideB
-                    card.update(from: cardData)
+//                    card.update(from: cardData)
+                    card.objectWillChange.send()
                     
                     
                     
@@ -50,11 +62,11 @@ struct CardDetailView: View {
     }
 }
 
-struct CardDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-//        NavigationView {
-        CardDetailView(card: .constant(Card.testData[1]), cardData: .constant(Card.testData[1].data))
-                .scaledToFit()
-//        }
-    }
-}
+//struct CardDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+////        NavigationView {
+//        CardDetailView(card: Card.testData[1], cardData: .constant(Card.testData[1].data))
+//                .scaledToFit()
+////        }
+//    }
+//}

@@ -10,7 +10,7 @@ import SwiftUI
 struct CardEditView: View {
     @State var sideA: String = ""
     @State var sideB: String = ""
-    var card: Card
+    @ObservedObject var card: Card
     @Binding var isPresented: Bool
 
     
