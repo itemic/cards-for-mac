@@ -7,11 +7,13 @@
 
 import SwiftUI
 
+
+
 @main
 struct Cards_for_MacApp: App {
     // state objects
     @StateObject private var sidebarState = SidebarState.shared
-    @StateObject private var cardsViewModel = CardsViewModel()
+    @StateObject private var viewState = ViewState.shared
     @ObservedObject private var data = CardsData()
     
     var body: some Scene {
@@ -27,23 +29,32 @@ struct Cards_for_MacApp: App {
             .navigationTitle("Cards for Mac")
             .navigationSubtitle("\(sidebarState.sidebarSelection?.capitalized ?? "")")
             .environmentObject(sidebarState)
+            .environmentObject(viewState)
             .toolbar {
-//                ToolbarItem(placement: .primaryAction) {
-//                    Text("A")
-//                }
+                ToolbarItem(placement: .primaryAction) {
+                    Button("Switch view") {
+                        switch (viewState.currentViewState) {
+                        case .library:
+                            viewState.currentViewState = .study
+                        case .study:
+                            viewState.currentViewState = .library
+                        }
+                    }
+                }
             }
-            
         }
-//        .windowToolbarStyle(UnifiedCompactWindowToolbarStyle())
         .commands {
             CommandGroup(after: CommandGroupPlacement.sidebar) {
-                            Button("Toggle Sidebar") {
-                                toggleSidebar()
-                            }.keyboardShortcut("T")
-                        }
+                Button("Toggle Sidebar") {
+                    toggleSidebar()
+                }.keyboardShortcut("T")
+            }
         }
+        
     }
+
     func toggleSidebar() {
         NSApp.keyWindow?.firstResponder?.tryToPerform(#selector(NSSplitViewController.toggleSidebar(_:)), with: nil)
     }
+    
 }
