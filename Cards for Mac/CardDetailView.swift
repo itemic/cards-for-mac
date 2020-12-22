@@ -41,6 +41,7 @@ struct CardDetailView: View {
                     card.update(from: cardData)
                     
                     
+                    
                     presentationMode.wrappedValue.dismiss()
                     
                 }

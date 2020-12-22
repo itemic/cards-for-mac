@@ -9,14 +9,14 @@ import SwiftUI
 
 struct SidebarView: View {
     @EnvironmentObject private var sidebarState: SidebarState
-    @State private var cards = Card.testData
+    @Binding var data: [Card]
     
     var mockCollections = ["A", "B", "C"]
     var body: some View {
         List(selection: $sidebarState.sidebarSelection) {
             
             ForEach(SidebarState.DefaultSidebarItems.allCases, id: \.self) { item in
-                NavigationLink(destination: PlaceholderView(cards: $cards, text: "\(item.rawValue)")) {
+                NavigationLink(destination: PlaceholderView(cards: $data, text: "\(item.rawValue)")) {
                     Label(LocalizedStringKey(item.rawValue.capitalized), systemImage: item.icon()).font(.headline)
                 }.listItemTint(item.color()).tag(item.rawValue)
                 
@@ -32,11 +32,12 @@ struct SidebarView: View {
                 
             }
         }
+       
     }
 }
 
-struct SidebarView_Previews: PreviewProvider {
-    static var previews: some View {
-        SidebarView()
-    }
-}
+//struct SidebarView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SidebarView()
+//    }
+//}

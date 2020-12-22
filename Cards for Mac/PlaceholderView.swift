@@ -31,6 +31,7 @@ struct PlaceholderView : View {
                         CardView(card: card)
                             .contextMenu {
                                 Button("Details", action: {
+                                    
                                     selectedCard = card
                                     data = card.data
                                 })
@@ -39,12 +40,24 @@ struct PlaceholderView : View {
                                     print(card.sideA)
                                 })
                             }
+                            
                     }
                     
                     
                 }.padding()
+                Button("Add card") {
+//                    showAddSheet.toggle()
+                    let newCard = Card(sideA: "", sideB: "")
+                    cards.append(newCard)
+                    selectedCard = newCard
+                }
                 
-            }.sheet(item: $selectedCard) { card in
+                
+            }
+            .popover(isPresented: $showAddSheet) {
+                NewCardView(cards: $cards)
+            }
+            .sheet(item: $selectedCard) { card in
                 CardDetailView(card: binding(for: card), cardData: $data)
             }
             
@@ -54,10 +67,11 @@ struct PlaceholderView : View {
                 Button("Add Card") {
                     showAddSheet.toggle()
                 }
-                .popover(isPresented: $showAddSheet) {
-                    CardView(card: Card(sideA: "Bruce", sideB: "Brace"))
-                }
+//                .popover(isPresented: $showAddSheet) {
+//                    NewCardView()
+//                }
             }
+            
         }
         
         
@@ -70,6 +84,14 @@ struct PlaceholderView : View {
         }
         
         return $cards[cardIndex]
+    }
+    
+    private func indexOf(_ card: Card) -> Int {
+    guard let cardIndex = cards.firstIndex(where: {$0 == card}) else {
+        fatalError("No card")
+    }
+    
+    return cardIndex
     }
     
     

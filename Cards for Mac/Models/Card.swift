@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Card: Identifiable, Equatable {
+struct Card: Identifiable, Equatable, Codable, Hashable {
     static func == (lhs: Card, rhs: Card) -> Bool {
         return lhs.id == rhs.id
     }

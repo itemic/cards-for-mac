@@ -12,11 +12,15 @@ struct Cards_for_MacApp: App {
     // state objects
     @StateObject private var sidebarState = SidebarState.shared
     @StateObject private var cardsViewModel = CardsViewModel()
+    @ObservedObject private var data = CardsData()
     
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                SidebarView()
+                SidebarView(data: $data.cards)
+            }
+            .onAppear {
+                data.load()
             }
             .frame(minWidth: 1000, minHeight: 800)
             .listStyle(SidebarListStyle())
@@ -30,6 +34,7 @@ struct Cards_for_MacApp: App {
             }
             
         }
+//        .windowToolbarStyle(UnifiedCompactWindowToolbarStyle())
         .commands {
             CommandGroup(after: CommandGroupPlacement.sidebar) {
                             Button("Toggle Sidebar") {
