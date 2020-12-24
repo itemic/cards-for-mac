@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		45048C7B25909B7100B892FE /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45048C7A25909B7100B892FE /* CardDetailView.swift */; };
 		45221BCD2591EF3500148D92 /* CardsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45221BCC2591EF3500148D92 /* CardsData.swift */; };
-		45221BD02591F55F00148D92 /* NewCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45221BCF2591F55F00148D92 /* NewCardView.swift */; };
 		45221BD3259202AA00148D92 /* EditableCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45221BD2259202AA00148D92 /* EditableCardView.swift */; };
 		458F347025922BAD0071E7E6 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458F346F25922BAD0071E7E6 /* ViewState.swift */; };
 		45C8D89625924304001DE23A /* EditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C8D89525924304001DE23A /* EditCardView.swift */; };
@@ -22,13 +20,10 @@
 		45CDC84B258F467C008AC70A /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CDC84A258F467C008AC70A /* Card.swift */; };
 		45CDC84E258F474B008AC70A /* CardsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CDC84D258F474B008AC70A /* CardsViewModel.swift */; };
 		45CDC851258F49B5008AC70A /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CDC850258F49B5008AC70A /* CardView.swift */; };
-		45CDC856258F503F008AC70A /* CardEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CDC855258F503F008AC70A /* CardEditView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		45048C7A25909B7100B892FE /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
 		45221BCC2591EF3500148D92 /* CardsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsData.swift; sourceTree = "<group>"; };
-		45221BCF2591F55F00148D92 /* NewCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCardView.swift; sourceTree = "<group>"; };
 		45221BD2259202AA00148D92 /* EditableCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableCardView.swift; sourceTree = "<group>"; };
 		458F346F25922BAD0071E7E6 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
 		45C8D89525924304001DE23A /* EditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardView.swift; sourceTree = "<group>"; };
@@ -44,7 +39,6 @@
 		45CDC84A258F467C008AC70A /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		45CDC84D258F474B008AC70A /* CardsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewModel.swift; sourceTree = "<group>"; };
 		45CDC850258F49B5008AC70A /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
-		45CDC855258F503F008AC70A /* CardEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,9 +89,6 @@
 				45CDC850258F49B5008AC70A /* CardView.swift */,
 				45221BD2259202AA00148D92 /* EditableCardView.swift */,
 				45CDC844258F3D02008AC70A /* PlaceholderView.swift */,
-				45CDC855258F503F008AC70A /* CardEditView.swift */,
-				45048C7A25909B7100B892FE /* CardDetailView.swift */,
-				45221BCF2591F55F00148D92 /* NewCardView.swift */,
 				45C8D89525924304001DE23A /* EditCardView.swift */,
 				45CDC836258F3AE8008AC70A /* Assets.xcassets */,
 				45CDC83B258F3AE8008AC70A /* Info.plist */,
@@ -184,11 +175,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45048C7B25909B7100B892FE /* CardDetailView.swift in Sources */,
-				45CDC856258F503F008AC70A /* CardEditView.swift in Sources */,
 				45C8D89625924304001DE23A /* EditCardView.swift in Sources */,
 				45CDC851258F49B5008AC70A /* CardView.swift in Sources */,
-				45221BD02591F55F00148D92 /* NewCardView.swift in Sources */,
 				45221BCD2591EF3500148D92 /* CardsData.swift in Sources */,
 				45CDC84B258F467C008AC70A /* Card.swift in Sources */,
 				45CDC835258F3AE7008AC70A /* SidebarView.swift in Sources */,

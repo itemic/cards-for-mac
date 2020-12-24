@@ -40,27 +40,24 @@ struct PlaceholderView : View {
                                     print(card.sideA)
                                 })
                             }
-                            
                     }
-                    
-                    
                 }.padding()
                 Button("Add card") {
                     showAddSheet.toggle()
-//                    let newCard = Card(sideA: "", sideB: "")
-//                    cards.append(newCard)
-//                    selectedCard = newCard
                 }
                 
                 
+                
             }
-            .popover(isPresented: $showAddSheet) {
-                NewCardView(cards: $cardsData.cards)
-            }
+            
             .sheet(item: $selectedCard) { card in
-                EditCardView(cards: $cardsData.cards, index: indexOf(card))
-
+                EditCardView(cards: $cardsData.cards, card: card, changeMode: .edit)
+                
             }
+            .background(EmptyView()
+                            .sheet(isPresented: $showAddSheet) {
+                                EditCardView(cards: $cardsData.cards, card: nil, changeMode: .add)
+                            })
             
         }
         .toolbar {
@@ -76,22 +73,6 @@ struct PlaceholderView : View {
         
     }
     
-//    private func binding(for card: Card) -> Binding<Card> {
-//
-//        guard let cardIndex = cardsData.cards.firstIndex(where: {$0 == card}) else {
-//            fatalError("No card")
-//        }
-//
-//        return cardsData.$cards[cardIndex]
-//    }
-    
-    private func indexOf(_ card: Card) -> Int {
-        guard let cardIndex = cardsData.cards.firstIndex(where: {$0 == card}) else {
-        fatalError("No card")
-    }
-    
-    return cardIndex
-    }
     
     
 }
