@@ -35,15 +35,13 @@ struct LibraryView : View {
                         
                         CardView(card: card)
                             .contextMenu {
-                                Button("Details", action: {
+                                Button("Edit", action: {
                                     
                                     selectedCard = card
                                     data = card.data
                                 })
-                                Button("Print", action: {
-                                    print(card.id)
-                                    print(card.sideA)
-                                })
+                                Divider()
+                                Text(card.deck?.name ?? "Not in Deck")
                             }
                     
                     }
