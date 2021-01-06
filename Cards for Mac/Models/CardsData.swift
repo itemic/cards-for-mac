@@ -10,7 +10,6 @@ import Foundation
 class CardsData: ObservableObject {
     @Published var cards: [Card] = [] {
         willSet {
-            print("w")
             self.objectWillChange.send()
         }
     }
@@ -20,7 +19,7 @@ class CardsData: ObservableObject {
         DispatchQueue.global(qos: .background).async { [weak self] in
             DispatchQueue.main.async {
                 self?.cards = Card.testData
-                print("this is running")
+//                print("this is running")
 //                print(self?.cards)
             }
             return

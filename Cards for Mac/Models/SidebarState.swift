@@ -12,6 +12,8 @@ import Combine
 
 class SidebarState: ObservableObject {
     public static let shared = SidebarState()
+    @Published var sidebarSelection: String? = DefaultSidebarItems.cards.rawValue
+
     
     enum DefaultSidebarItems: String, CaseIterable {
         case today, home, cards, stats
@@ -34,12 +36,15 @@ class SidebarState: ObservableObject {
             }
         }
         
+        
+        
+
+        
     }
     
     
     private init() {
         sidebarSelection = DefaultSidebarItems.today.rawValue
     }
-    @Published var sidebarSelection: String? = DefaultSidebarItems.today.rawValue
 
 }

@@ -7,15 +7,14 @@
 
 import SwiftUI
 
-struct PlaceholderView : View {
+struct LibraryView : View {
     @ObservedObject var cardsData: CardsData
     
     @State var showAddSheet = false
     @State private var selectedCard: Card? = nil
-    
     var columns: [GridItem] =
         [GridItem(.adaptive(minimum: 200))]
-    var text: String
+    
     
     @State private var data: Card.Data = Card.Data()
     
@@ -40,11 +39,13 @@ struct PlaceholderView : View {
                                     print(card.sideA)
                                 })
                             }
+                    
                     }
                 }.padding()
-                Button("Add card") {
-                    showAddSheet.toggle()
-                }
+//                Button("Add card") {
+//                    showAddSheet.toggle()
+//                }
+           
                 
                 
                 
@@ -61,7 +62,7 @@ struct PlaceholderView : View {
             
         }
         .toolbar {
-            ToolbarItem(placement: .primaryAction) {
+            ToolbarItem(placement: .confirmationAction) {
                 Button("Add Card") {
                     showAddSheet.toggle()
                 }

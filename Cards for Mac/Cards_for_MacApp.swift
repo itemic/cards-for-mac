@@ -31,16 +31,7 @@ struct Cards_for_MacApp: App {
             .environmentObject(sidebarState)
             .environmentObject(viewState)
             .toolbar {
-                ToolbarItem(placement: .primaryAction) {
-                    Button("Switch view") {
-                        switch (viewState.currentViewState) {
-                        case .library:
-                            viewState.currentViewState = .study
-                        case .study:
-                            viewState.currentViewState = .library
-                        }
-                    }
-                }
+                
             }
         }
         .commands {
