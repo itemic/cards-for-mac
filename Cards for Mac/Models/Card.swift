@@ -15,25 +15,27 @@ class Card: Identifiable, Equatable, Codable, ObservableObject {
     let id: UUID
     var sideA: String
     var sideB: String
+    var deck: Deck?
     
     init(id: UUID = UUID(), sideA: String, sideB: String) {
         self.id = id
         self.sideA = sideA
         self.sideB = sideB
+        self.deck = nil
     }
 }
 
 extension Card {
-    static var testData: [Card] {
+    static var testCardData: [Card] {
         [
         Card(sideA: "spring", sideB: "春"),
         Card(sideA: "summer", sideB: "夏"),
         Card(sideA: "autumn", sideB: "秋"),
         Card(sideA: "winter", sideB: "冬"),
-            Card(sideA: "up", sideB: "うえ"),
-            Card(sideA: "down", sideB: "した"),
-            Card(sideA: "left", sideB: "ひだり"),
-            Card(sideA: "right", sideB: "みぎ"),
+        Card(sideA: "up", sideB: "うえ"),
+        Card(sideA: "down", sideB: "した"),
+        Card(sideA: "left", sideB: "ひだり"),
+        Card(sideA: "right", sideB: "みぎ"),
       
         ]
     }

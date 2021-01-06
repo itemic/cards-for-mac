@@ -42,23 +42,24 @@ struct SidebarView: View {
             }
             
             
-//            ForEach(SidebarState.DefaultSidebarItems.allCases, id: \.self) { item in
-////                NavigationLink(destination: LibraryView(cardsData: data, text: "\(item.rawValue)")) {
-//                NavigationLink(destination: LibraryView(cardsData: data, text: "\(item.rawValue)")) {
-//                    Label(LocalizedStringKey(item.rawValue.capitalized), systemImage: item.icon()).font(.headline)
-//                }.listItemTint(item.color()).tag(item.rawValue)
-//
-//            }
-            
+
             
             Divider()
-            Text("Collections".uppercased()).font(.headline)
-            ForEach(mockCollections, id: \.self) { name in
-//                NavigationLink(destination: PlaceholderView(text: name)) {
-                    Label("\(name) View", systemImage: "a.circle")
-//                }.listItemTint(/*@START_MENU_TOKEN@*/.monochrome/*@END_MENU_TOKEN@*/)
-                
+            Text("Decks".uppercased()).font(.headline)
+            
+            ForEach(data.decks, id: \.id) { deck in
+                NavigationLink(destination: LibraryView(cardsData: data, filterDeck: deck)) {
+                    Label("\(deck.name)", systemImage: deck.name.iconify)
+                }
+                    .tag(deck.name)
             }
+            NavigationLink(destination: LibraryView(cardsData: data, filterUncategorized: true)) {
+            Label("Not in Deck", systemImage: "slash.circle")
+            }
+                .tag("not in deck")
+            .listItemTint(/*@START_MENU_TOKEN@*/.monochrome/*@END_MENU_TOKEN@*/)
+            
+
         }
        
     }

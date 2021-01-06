@@ -18,6 +18,9 @@ struct LibraryView : View {
     
     @State private var data: Card.Data = Card.Data()
     
+    var filterDeck: Deck?
+    var filterUncategorized: Bool?
+    
     
     var body: some View {
         VStack {
@@ -25,7 +28,10 @@ struct LibraryView : View {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 20) {
                     
-                    ForEach(cardsData.cards) { card in
+//                    ForEach(cardsData.cards) { card in
+                    ForEach(cardsData.cards.filter {
+                        filterUncategorized == true ? $0.deck == nil : filterDeck == nil ? true : $0.deck == filterDeck!
+                    }) { card in
                         
                         CardView(card: card)
                             .contextMenu {
@@ -42,9 +48,7 @@ struct LibraryView : View {
                     
                     }
                 }.padding()
-//                Button("Add card") {
-//                    showAddSheet.toggle()
-//                }
+
            
                 
                 
@@ -52,12 +56,12 @@ struct LibraryView : View {
             }
             
             .sheet(item: $selectedCard) { card in
-                EditCardView(cards: $cardsData.cards, card: card, changeMode: .edit)
+                EditCardView(cards: $cardsData.cards, decks: $cardsData.decks, card: card, changeMode: .edit)
                 
             }
             .background(EmptyView()
                             .sheet(isPresented: $showAddSheet) {
-                                EditCardView(cards: $cardsData.cards, card: nil, changeMode: .add)
+                                EditCardView(cards: $cardsData.cards, decks: $cardsData.decks, card: nil, changeMode: .add)
                             })
             
         }

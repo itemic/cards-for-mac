@@ -13,12 +13,18 @@ class CardsData: ObservableObject {
             self.objectWillChange.send()
         }
     }
+    @Published var decks: [Deck] = [] {
+        willSet {
+            self.objectWillChange.send()
+        }
+    }
     
     func load() {
         
         DispatchQueue.global(qos: .background).async { [weak self] in
             DispatchQueue.main.async {
-                self?.cards = Card.testData
+                self?.cards = Card.testCardData
+                self?.decks = Deck.testDeckData
 //                print("this is running")
 //                print(self?.cards)
             }

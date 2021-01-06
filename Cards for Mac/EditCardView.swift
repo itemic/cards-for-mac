@@ -16,14 +16,18 @@ struct EditCardView: View {
     @State  var sideA: String = ""
     @State  var sideB: String = ""
     @Binding var cards: [Card]
+    @Binding var decks: [Deck]
     let card: Card
 //    let index: Int
     let changeMode: ChangeMode
 //     var card: Card
 //    @State var data: Card.Data
     
-    init(cards: Binding<[Card]>, card: Card?, changeMode: ChangeMode) {
+    @State var assignedDeck: Deck? = nil
+
+    init(cards: Binding<[Card]>, decks: Binding<[Deck]>, card: Card?, changeMode: ChangeMode) {
         self._cards = cards
+        self._decks = decks
 //        self.index = index
         
 //        let card: Card = cards.wrappedValue[index]
@@ -32,6 +36,7 @@ struct EditCardView: View {
         
         self._sideA = State(initialValue: self.card.sideA)
         self._sideB = State(initialValue: self.card.sideB)
+        self._assignedDeck = State(initialValue: self.card.deck)
     }
     
     var body: some View {
@@ -53,6 +58,13 @@ struct EditCardView: View {
             .padding()
             .background(Color.secondary)
             
+            HStack {
+                Picker("Deck", selection: $assignedDeck) {
+                    ForEach(decks) { deck in
+                        Text(deck.name).tag(deck as Deck?)
+                    }
+                }
+            }
             
             HStack(spacing: 0) {
                 Spacer()
@@ -77,6 +89,7 @@ struct EditCardView: View {
     private func saveChanges() {
         
         let c = Card(sideA: sideA.trimmingCharacters(in: .whitespacesAndNewlines), sideB: sideB.trimmingCharacters(in: .whitespacesAndNewlines))
+        c.deck = assignedDeck
         
         switch (changeMode) {
         case .add:
